@@ -1,0 +1,22 @@
+.c-item {
+    height: 480px;
+}
+
+.c-img {
+    height: 100%;
+    filter:brightness(0.7);
+}
+
+.overview {
+    height: 180px;
+    background-color: #D2B48C
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+  .navbar-brand img {
+    height: 60px; 
+    margin-right: 10px;
+}
