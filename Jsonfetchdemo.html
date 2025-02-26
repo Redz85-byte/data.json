@@ -13,7 +13,7 @@
     <div id="vastaus"></div>
 
     <script>
-        fetch('TÄHÄN_OMA_JSON_LINKKI')
+        fetch('https://redz85-byte.github.io/data.json/data.json')
             .then(response => response.json())
             .then(responseJson => kerro(responseJson))
             .catch(error => {
