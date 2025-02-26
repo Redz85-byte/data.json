@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>JSON testi sivu</h1>
+    <div id="vastaus"></div>
+
+    <script>
+        fetch('TÄHÄN_OMA_JSON_LINKKI')
+            .then(response => response.json())
+            .then(responseJson => kerro(responseJson))
+            .catch(error => {
+                document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+            });
+
+        function kerro(data) {
+            let html = `<h2>${data.otsikko}</h2>`;
+            html += `<p>${data.kuvaus}</p>`;
+            html += `<img src="${data.kuva}" alt="JSON Kuva" width="300">`;
+            html += `<h3>Opintojakso: ${data.opintojakso.nimi} (${data.opintojakso.tunnus})</h3>`;
+            html += `<p>Opintopisteet: ${data.opintojakso.opintopisteet}</p>`;
+
+            html += `<h3>Sisältö</h3><ul>`;
+            data.opintojakso.sisalto.forEach(aihe => {
+                html += `<li>${aihe}</li>`;
+            });
+            html += `</ul>`;
+
+            html += `<h3>Tekniikat</h3><ul>`;
+            data.opintojakso.tekniikat.forEach(tekniikka => {
+                html += `<li><a href="${tekniikka.linkki}" target="_blank">${tekniikka.aihe}</a></li>`;
+            });
+            html += `</ul>`;
+
+            document.getElementById("vastaus").innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
